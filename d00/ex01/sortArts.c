@@ -18,5 +18,5 @@ void        sortArts(struct s_art **arts)
         return ;
     while (arts[size])
         size++;
-    qsort(arts, size, sizeof(struct s_art *), comp_func);
+    mergesort(arts, size, sizeof(struct s_art *), comp_func);
 }
