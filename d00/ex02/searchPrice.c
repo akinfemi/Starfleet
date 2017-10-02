@@ -13,12 +13,12 @@ int searchPrice(struct s_art **arts, int n, char *name)
     if (strcmp(name, (*art_half)->name) == 0)
         return (*art_half)->price;
     if (strcmp(name, (*art_half)->name) > 0){
-        // printf ("here:   %s----%d\n",(*art_half)->name, n);
-        return (searchPrice(art_half, n/2, name));
+        printf ("here:   %s----%d\n",(*art_half)->name, n);
+        return (searchPrice(art_half, n - n/2, name));
     }
     else if (strcmp(name, (*art_half)->name) < 0)
     {
-        // printf ("here:   %s----%d\n",(*art_half)->name, n);
+        printf ("here:   %s----%d\n",(*art_half)->name, n);
         return (searchPrice(arts, n/2, name));
     }
     return (-1);

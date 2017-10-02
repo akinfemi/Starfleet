@@ -14,8 +14,8 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(arts, n, "Guernica"));
-	printf("price for the art \'%s\' is %d\n", "Mona Lisa", searchPrice(arts, n,"Mona Lisa"));
+	// printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(arts, n, "Guernica"));
+	// printf("price for the art \'%s\' is %d\n", "Mona Lisa", searchPrice(arts, n,"Mona Lisa"));
 	printf("price for the art \'%s\' is %d\n", "Guardian Angel handbag", searchPrice(arts, n,"Guardian Angel handbag"));
 	// printf("price for the art \'%s\' is %d\n", "Johan Hagemeyer", searchPrice(arts,n, "Johan Hagemeyer"));
 	// printf("price for the art \'%s\' is %d\n", "Johan", searchPrice(arts, n,"Johan"));
