@@ -47,48 +47,10 @@ const uint32_t PERIOD_TASKS_STACK_SIZE_BYTES = (512 * 4);
  * printf inside these functions, you need about 1500 bytes minimum
  */
 const uint32_t PERIOD_DISPATCHER_TASK_STACK_SIZE_BYTES = (512 * 3);
-// bool G_FLAG = 0;
-// static int n_count;
-// GPIO p20 (P2_0);
-// static void intr_handler()
-// {
-//     printf("Interrupt\n");
-//     G_FLAG = !G_FLAG;
-// }
-
-// static void bus_off(uint32_t can_num)
-// {
-// 	CAN_reset_bus(can_num);
-// }
-// static void data_ovr(uint32_t can_num)
-// {
-// 	CAN_reset_bus(can_num);
-// }
-/// Called once before the RTOS is started, this is a good place to initialize things once
-
-// bool	can_func(void)
-// {
-// 	can_msg_t rx_msg;
-// 	can_msg_t tx_msg;
-// 	rx_msg.msg_id = 0x122;
-// 	rx_msg.frame_fields.is_29bit = 1;
-// 	rx_msg.frame_fields.data_len = 8;       // Send 8 bytes
-// 	rx_msg.data.qword = 0x1122334455667788; // Write all 8 bytes of data at once
-
-// 	tx_msg.msg_id = 0x125;
-// 	tx_msg.frame_fields.is_29bit = 1;
-// 	tx_msg.frame_fields.data_len = 8;       // Send 8 bytes
-// 	tx_msg.data.qword = 0x1122334455667788;
-// }
 can_msg_t rx_msg;
 can_msg_t tx_msg;
 bool period_init(void)
 {
-	// Uart2 &u2 = Uart2::getInstance();
-
-	// CAN_init(can_t can, uint32_t baudrate_kbps, uint16_t rxq_size, uint16_t txq_size,
-		// can_void_func_t bus_off_cb, can_void_func_t data_ovr_cb);
-	// CAN_init(can1, 500, 20, 20, bus_off, data_ovr);
 	rx_msg.msg_id = 0x122;
 	rx_msg.frame_fields.is_29bit = 1;
 	rx_msg.frame_fields.data_len = 8;       // Send 8 bytes
