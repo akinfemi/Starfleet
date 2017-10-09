@@ -1,13 +1,14 @@
 #include "header.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 size_t		hash(char *key)
 {
 	size_t	res;
 
 	res = 0;
-	while(key)
+	while(key && *key)
 	{
 		res += *key * 31;
 		key++;
@@ -27,40 +28,41 @@ struct s_dict *dictInit(int capacity)
 
 int		dictInsert(struct s_dict *dict, char *key, struct s_art *value)
 {
-	int		index;
+	size_t		index;
 	struct s_item *head;
 
 	if (!dict)
 		return (-1);
 	index = hash(key) % dict->capacity;
-	if (index == -1)
-		return (-1);
 	head = dict->items[index];
-	if(!head)
+	if(head == 0)
 	{
+		head = (struct s_item *)malloc(sizeof(struct s_item));
 		head->value = value;
-		head->key = key;
+		head->key = strdup(key);
 		head->next = NULL;
+		dict->items[index] = head;
 	}
 	else
 	{
 		while (head->next)
 			head = head->next;
-		head->value = value;
-		head->key = key;
-		head->next = NULL;
+		head->next = (struct s_item *)malloc(sizeof(struct s_item));
+		head->next->value = value;
+		head->next->key = strdup(key);
+		head->next->next = NULL;
 	}
 	return (1);
 }
 
 struct s_art	*dictSearch(struct s_dict *dict, char *key)
 {
-	int		index;
+	size_t		index;
 	struct s_item	*item;
 
 	if (!dict)
 		return (0);
-	index = hash(key);
+	index = hash(key) % dict->capacity;
 	item = dict->items[index];
 	if (!item)
 		return (0);
@@ -68,7 +70,7 @@ struct s_art	*dictSearch(struct s_dict *dict, char *key)
 		return (item->value);
 	else
 	{
-		while (item->next)
+		while (item)
 		{
 			if (strcmp(item->key, key) == 0)
 				return (item->value);

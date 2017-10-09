@@ -11,7 +11,7 @@ int main(void)
 	int		count = 0;
 	int		i = 0;
 	int		r = 0;
-	struct s_art	*out;
+	struct s_art	*out = NULL;
 
 	srand(time(NULL));
 
@@ -21,22 +21,21 @@ int main(void)
 	launch your test here
 	--------------------*/
 	struct s_dict *dict;
-	dict = dictInit(100000);
+	dict = dictInit(10000);
 	while (arts[count] != NULL)
 	{
 		dictInsert(dict, arts[count]->name, arts[count]);
 		++count;
 	}
-
-	while (i < 10)
+	while (i < 100)
 	{
 		r = rand() % count;
 		out = dictSearch(dict, arts[r]->name);
-		if (out == NULL)
-			printf("price for the art \'%s\' is %d\n", arts[r]->name, -1);
+		if (out != NULL)
+			printf("price for the art \'%s\' is %d\n", out->name, out->price);
 		else
-			printf("price for the art \'%s\' is %d\n", arts[r]->name, out->price);
-		++i;
+			printf("price for the art \'%s\' is %d\n", arts[r]->name, -1);
+		i++;
 	}
 	return (0);
 }
