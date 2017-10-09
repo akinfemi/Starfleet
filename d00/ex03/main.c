@@ -4,20 +4,40 @@
 #include <stdlib.h> //malloc, free, exit...
 
 #include "header.h"
-
+#include <time.h>
 int main(void)
 {
 	struct s_art **arts;
+	int		count = 0;
+	int		i = 0;
+	int		r = 0;
+	struct s_art	*out;
+
+	srand(time(NULL));
 
 	arts = getArts(); //parsing the file and put it in an array
 
 	/*-------------------
 	launch your test here
 	--------------------*/
-	//struct s_dict *dict;
-	//
-	//
+	struct s_dict *dict;
+	dict = dictInit(100000);
+	while (arts[count] != NULL)
+	{
+		dictInsert(dict, arts[count]->name, arts[count]);
+		++count;
+	}
 
+	while (i < 10)
+	{
+		r = rand() % count;
+		out = dictSearch(dict, arts[r]->name);
+		if (out == NULL)
+			printf("price for the art \'%s\' is %d\n", arts[r]->name, -1);
+		else
+			printf("price for the art \'%s\' is %d\n", arts[r]->name, out->price);
+		++i;
+	}
 	return (0);
 }
 

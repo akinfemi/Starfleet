@@ -1,6 +1,7 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+#include <stddef.h>
 /*--------------------------------
   !! required structure
   --------------------------------*/
@@ -26,7 +27,6 @@ struct s_dict {
   --------------------------------*/
 
 // DICTIONNARY
-
 size_t hash(char *input); //return hash result
 
 struct s_dict *dictInit(int capacity); //initialize the dictionnary, given as parameter the capacity of the array.
