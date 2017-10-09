@@ -1,16 +1,20 @@
 #include "header.h"
 #include <string.h>
-#include <stdio.h>
 
+static int binary_search(struct s_art **arts, int start, int end, char *name)
+{
+	int		mid;
+
+	if (start > end)
+		return (-1);
+	mid = (start + end) / 2;
+	if (strcmp(name, arts[mid]->name) < 0)
+		return (binary_search(arts, start, mid - 1, name));
+	else if (strcmp(name, arts[mid]->name) > 0)
+		return (binary_search(arts, mid + 1, end, name));
+	return (arts[mid]->price);
+}
 int searchPrice(struct s_art **arts, int n, char *name)
 {
-    struct s_art **art_half = NULL;
-    if (n <= 0)
-        return (-1);
-    art_half = arts + n/2;
-    if (strcmp(name, (*art_half)->name) > 0)
-        return (searchPrice(art_half, n/2 + 1, name));
-    else if (strcmp(name, (*art_half)->name) < 0)
-        return (searchPrice(arts, n/2 - 1, name));
-    return (*art_half)->price;
+	return (binary_search(arts, 0, n - 1, name));
 }
