@@ -76,7 +76,7 @@ char    *console(void)
                 push (stack, idx + 1);
             }
             else
-                push (stack, idx + 1);
+                push (stack, idx);
             strcat(input,buffer);
             printf("%s\n", input);
         }
