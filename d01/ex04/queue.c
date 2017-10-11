@@ -1,15 +1,5 @@
 #include <stdlib.h>
 
-struct s_item {
-	char     *message;
-	struct s_item *next;
-};
-
-struct s_queue {
-	struct s_item *first;
-	struct s_item *last;
-};
-
 struct s_item *create_item (char *message) {
 	struct s_item *item = malloc(sizeof(*item));
 	item->message = message;

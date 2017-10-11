@@ -13,14 +13,14 @@
 	Queue
 */
 
-struct s_node {
-	char          *message;
-	struct s_node *next;
+struct s_item {
+	char     *message;
+	struct s_item *next;
 };
 
 struct s_queue {
-  struct s_node *first;
-	struct s_node *last;
+	struct s_item *first;
+	struct s_item *last;
 };
 
 
