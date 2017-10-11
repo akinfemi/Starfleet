@@ -1,0 +1,2 @@
+O(log n), time complexity, where n is the number of words
+O(n), space complexity
